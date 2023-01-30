@@ -444,7 +444,7 @@ pauseBtn.addEventListener('click', pausePlayer);
 stopBtn.addEventListener('click', (event) => {
     audio.src = '';
     player.classList.remove('player_active');
-    // document.querySelector('.track_active').classList.remove('track_active');
+    document.querySelector('.track_active').classList.remove('track_active');
 });
 
 const createCard = (data) => {
@@ -579,7 +579,7 @@ const init = () => {
         }
     });
 
-    searchBtn.addEventListener('click', (event) => {
+    search.addEventListener('submit', (event) => {
         event.preventDefault();
         playlist = [];
 
