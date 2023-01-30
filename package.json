@@ -1,0 +1,27 @@
+{
+  "name": "mth.music",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Urkul/mth.music.git"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Urkul/mth.music/issues"
+  },
+  "homepage": "https://github.com/Urkul/mth.music#readme",
+  "devDependencies": {
+    "eslint": "^8.32.0",
+    "gulp": "^4.0.2",
+    "gulp-cssimport": "^7.0.0",
+    "gulp-group-css-media-queries": "^1.2.2"
+  }
+}
