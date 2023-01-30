@@ -358,6 +358,8 @@ const playerTimePassed = document.querySelector('.player__time-passed');
 const playerTimeTotal = document.querySelector('.player__time-total');
 const playerVolumeInput = document.querySelector('.player__volume-input'); 
 
+const search = document.querySelector('.search');
+
 const catalogAddBtn = document.createElement('button');
 catalogAddBtn.classList.add('catalog__btn-add');
 catalogAddBtn.innerHTML = `
@@ -440,7 +442,7 @@ pauseBtn.addEventListener('click', pausePlayer);
 stopBtn.addEventListener('click', (event) => {
     audio.src = '';
     player.classList.remove('player_active');
-    document.querySelector('.track_active').classList.remove('track_active');
+    // document.querySelector('.track_active').classList.remove('track_active');
 });
 
 const createCard = (data) => {
@@ -474,7 +476,7 @@ const renderCatalog = (dataList) => {
 
 const checkCount = (i = 1) => {
     tracksCard[0];
-    if (catalogContainer.clientHeight > tracksCard[0].clientHeight * 3) {
+    if (catalogContainer.clientHeight + 20 > tracksCard[0].clientHeight * 3) {
         tracksCard[tracksCard.length - i].style.display = 'none';
         checkCount(i + 1);
     } else if ( i !== 1 ) {
@@ -567,6 +569,20 @@ const init = () => {
             muteBtn.classList.remove('player__icon_mute-off');
             playerVolumeInput.value = audio.volume * 100;
         }
+    });
+
+    search.addEventListener('submit', (event) => {
+        event.preventDefault();
+        playlist = [];
+
+        for(let i = 0; i < dataMusic.length - 1; i++){
+            if(dataMusic[i].artist.toLowerCase().indexOf(search.search.value.toLowerCase()) !== -1  || 
+                dataMusic[i].track.toLowerCase().indexOf(search.search.value.toLowerCase()) !== -1 ) {
+                playlist.push(dataMusic[i]);
+            }
+        }
+        renderCatalog(playlist);
+        checkCount();
     });
 
 };
