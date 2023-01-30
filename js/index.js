@@ -583,6 +583,8 @@ const init = () => {
         }
         renderCatalog(playlist);
         checkCount();
+
+        search.search.value = '';
     });
 
 };
