@@ -359,6 +359,7 @@ const playerTimeTotal = document.querySelector('.player__time-total');
 const playerVolumeInput = document.querySelector('.player__volume-input'); 
 
 const search = document.querySelector('.search');
+const searchBtn = document.querySelector('.search__btn');
 
 const catalogAddBtn = document.createElement('button');
 catalogAddBtn.classList.add('catalog__btn-add');
@@ -415,6 +416,7 @@ const playMusic = (event) => {
 
     pauseBtn.classList.remove('player__icon_play');
     player.classList.add('player_active');
+    player.dataset.idTrack = id;
 
     const prevTrack = i === 0 ? playlist.length - 1 : i - 1;
     const nextTrack = i + 1 === playlist.length ? 0 : i + 1;
@@ -449,6 +451,12 @@ const createCard = (data) => {
     const card = document.createElement('a');
     card.href = "#";
     card.classList.add('catalog__item', 'track');
+    if (player.dataset.idTrack === data.id) {
+        card.classList.add('track_active');
+        if (audio.paused) {
+            card.classList.add('track_pause');
+        }
+    }
     card.dataset.idTrack = data.id;
 
     card.innerHTML = `
@@ -571,7 +579,7 @@ const init = () => {
         }
     });
 
-    search.addEventListener('submit', (event) => {
+    searchBtn.addEventListener('click', (event) => {
         event.preventDefault();
         playlist = [];
 
